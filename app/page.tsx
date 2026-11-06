@@ -189,9 +189,10 @@ export default function Home() {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <a className="project-link" href={project.url}>
-                  View on GitHub →
-                </a>
+                <p className="project-links">
+                  <a href={project.url}>View on GitHub →</a>
+                  {project.live && <a href={project.live}>Live dashboard →</a>}
+                </p>
               </article>
             ))}
           </div>

@@ -66,7 +66,7 @@ export function instantReply(question: string, context: ChatContext): Reply | nu
       id: "skill",
       text: answer,
       links: [{ label: "See Skills", href: "#skills" }, ...(/isn't|aren't/.test(answer) ? [EMAIL_LINK] : [])],
-      note: "Checked directly against Soham's resume",
+      note: "Checked directly against Soham's resume and projects",
       suggestions: nextSuggestions(["skills", "ml-experience", "projects"], context.seen),
     };
   }

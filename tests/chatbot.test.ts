@@ -55,22 +55,29 @@ describe("keyword search (used when the model can't load)", () => {
 describe("skill lookup", () => {
   it("confirms a resume skill and says where it was used", () => {
     const answer = skillAnswer("Does Soham know Python?");
-    expect(answer).toContain("shows Python");
+    expect(answer).toContain("worked with Python");
     expect(answer).toContain("H2O.ai");
     expect(answer).not.toContain("Accenture");
   });
 
   it("doesn't claim skills that aren't on the resume", () => {
-    const answer = skillAnswer("Does Soham have Docker experience?");
-    expect(answer).toContain("Docker isn't listed");
+    const answer = skillAnswer("Does Soham have Kubernetes experience?");
+    expect(answer).toContain("Kubernetes isn't listed");
     expect(answer).not.toContain("Yes");
   });
 
   it("handles a mix of listed and unlisted skills", () => {
     const answer = skillAnswer("Has Soham used Spark and Kafka?");
-    expect(answer).toContain("shows Spark");
+    expect(answer).toContain("worked with Spark");
     expect(answer).toContain("the e-commerce data pipeline project");
     expect(answer).toContain("Kafka isn't listed");
+  });
+
+  it("uses project evidence for tools outside the resume", () => {
+    expect(skillAnswer("Does Soham know XGBoost?")).toContain(
+      "worked with XGBoost in the football player valuation project",
+    );
+    expect(skillAnswer("Has Soham used Docker?")).toContain("worked with Docker");
   });
 
   it("doesn't confuse similar names", () => {

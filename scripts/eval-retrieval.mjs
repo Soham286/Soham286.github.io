@@ -63,6 +63,11 @@ const answerable = [
   ["what's the most impressive thing soham has done", "impact"],
   ["did soham do any research on uncertainty", "usc-research"],
   ["how good is soham's retrieval work", "rag"],
+  // Added with the two new projects.
+  ["what was the soccer market value model", "pl-transfer"],
+  ["any sports analytics projects", "pl-transfer"],
+  ["what's the leetcode practice bot", "dsa-agent"],
+  ["does soham know xgboost", "skill"],
 ];
 
 // Should decline rather than answer. "personal" is itself a polite "I don't know".

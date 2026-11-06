@@ -1,10 +1,10 @@
-// Answers "does Soham know X?" exactly, from the resume, instead of by similarity.
+// Answers "does Soham know X?" exactly, from the resume and projects, instead of by similarity.
 // Similarity search could otherwise answer a Docker question with a loosely related
 // answer that implies experience Soham's resume doesn't claim.
 
 import { profile } from "../content/profile.ts";
 
-/** Named tools on the resume, with other ways people write them. */
+/** Named tools from the resume and projects, with other ways people write them. */
 const KNOWN: Record<string, string[]> = {
   Python: ["python"],
   Java: ["java"],
@@ -12,6 +12,12 @@ const KNOWN: Record<string, string[]> = {
   "C++": ["c++", "cpp"],
   JavaScript: ["javascript"],
   "scikit-learn": ["scikit-learn", "scikit learn", "sklearn"],
+  XGBoost: ["xgboost"],
+  SHAP: ["shap"],
+  Streamlit: ["streamlit"],
+  Plotly: ["plotly"],
+  Docker: ["docker"],
+  "GitHub Actions": ["github actions"],
   TensorFlow: ["tensorflow"],
   PyTorch: ["pytorch", "torch"],
   pandas: ["pandas"],
@@ -41,9 +47,8 @@ const KNOWN: Record<string, string[]> = {
   FHIR: ["fhir"],
 };
 
-/** Common tools recruiters ask about that are not on the resume. */
+/** Common tools recruiters ask about that aren't on the resume or in Soham's projects. */
 const NOT_LISTED: Record<string, string[]> = {
-  Docker: ["docker"],
   Kubernetes: ["kubernetes", "k8s"],
   React: ["react", "reactjs"],
   Angular: ["angular"],
@@ -78,7 +83,6 @@ const NOT_LISTED: Record<string, string[]> = {
   LangChain: ["langchain"],
   LlamaIndex: ["llamaindex"],
   "Hugging Face": ["hugging face", "huggingface"],
-  XGBoost: ["xgboost"],
   Keras: ["keras"],
   JAX: ["jax"],
   Jenkins: ["jenkins"],
@@ -150,7 +154,7 @@ export function skillAnswer(question: string): string | null {
   const sentences = known.map((skill) => {
     const places = whereUsed(skill);
     return places.length > 0
-      ? `Yes, Soham's resume shows ${skill} ${joinList(places)}.`
+      ? `Yes, Soham has worked with ${skill} ${joinList(places)}.`
       : `Yes, ${skill} is listed in Soham's technical skills.`;
   });
 
@@ -158,7 +162,7 @@ export function skillAnswer(question: string): string | null {
     const names = joinList(notListed);
     const verb = notListed.length > 1 ? "aren't" : "isn't";
     sentences.push(
-      `${names} ${verb} listed on Soham's resume, so I can't confirm that experience. It's best to ask Soham directly.`,
+      `${names} ${verb} listed on Soham's resume or projects, so I can't confirm that experience. It's best to ask Soham directly.`,
     );
   }
   return sentences.join(" ");

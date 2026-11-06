@@ -1,4 +1,5 @@
-// Single source of truth for the page. Everything here comes from Soham's resume.
+// Single source of truth for the page. Everything here comes from Soham's resume
+// and public GitHub project repos.
 // The phone number is deliberately left out because this site is public.
 
 export const profile = {
@@ -135,9 +136,19 @@ export const profile = {
   ],
   projects: [
     {
+      name: "PL Transfer Value: Football Player Valuation",
+      short: "the football player valuation project",
+      stack: ["Python", "XGBoost", "scikit-learn", "SHAP", "Streamlit", "pandas", "Plotly"],
+      url: "https://github.com/Soham286/pl-transfer-value",
+      points: [
+        "Trained a tuned XGBoost model on 64,622 player-season records with leakage-aware, time-based evaluation, reaching R² 0.80 and a €2.76M mean absolute error on a held-out 2025 season.",
+        "Built a Streamlit app with a searchable catalog of 4,977 real players, custom-player valuations, and SHAP explanations for each custom prediction.",
+      ],
+    },
+    {
       name: "E-Commerce Data Pipeline with Medallion Architecture",
       short: "the e-commerce data pipeline project",
-      stack: ["Databricks", "PySpark", "Delta Lake", "Airflow"],
+      stack: ["Databricks", "PySpark", "Delta Lake", "Airflow", "Docker"],
       url: "https://github.com/Soham286/ecommerce-medallion-pipeline",
       points: [
         "Built a Databricks Medallion pipeline processing 10M+ daily records across Bronze, Silver, and Gold layers.",
@@ -147,11 +158,22 @@ export const profile = {
     {
       name: "Explainable NLP-Powered Academic Document Analyzer",
       short: "the academic document analyzer project",
-      stack: ["Python", "RAG", "Sentence-BERT", "FAISS"],
+      stack: ["Python", "RAG", "Sentence-BERT", "FAISS", "Docker"],
       url: "https://github.com/Soham286/academic-document-analyzer",
       points: [
         "Built a Sentence-BERT and FAISS pipeline over 5,000+ document chunks, generating context-grounded answers with source citations.",
         "Compared semantic filtering, section-aware retrieval, and MMR using RAGAS metrics to improve retrieval quality.",
+      ],
+    },
+    {
+      name: "DSA Mastery Agent",
+      short: "the DSA Mastery Agent project",
+      stack: ["Python", "GitHub Actions", "Streamlit"],
+      url: "https://github.com/Soham286/leetcode-daily-agent",
+      live: "https://soham-dsa-mastery.streamlit.app/",
+      points: [
+        "Built an automated practice agent on GitHub Actions that emails daily coding problems, detects accepted LeetCode submissions, and tracks revision progress.",
+        "Added warning emails, weekly reports, and a live Streamlit dashboard for topic performance and deadline pace.",
       ],
     },
   ],
@@ -177,7 +199,7 @@ export const profile = {
     },
     {
       group: "Machine Learning Tools",
-      items: ["scikit-learn", "TensorFlow", "PyTorch", "pandas", "NumPy", "OpenCV"],
+      items: ["scikit-learn", "TensorFlow", "PyTorch", "XGBoost", "SHAP", "pandas", "NumPy", "OpenCV"],
     },
     {
       group: "Large-Scale Data and Production Systems",
@@ -203,6 +225,8 @@ export const profile = {
         "AWS",
         "Azure",
         "Azure Data Lake",
+        "Docker",
+        "GitHub Actions",
         "Linux",
         "Git",
         "JUnit",

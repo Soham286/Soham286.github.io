@@ -38,6 +38,8 @@ const KEYWORDS: Record<string, string[]> = {
   accenture: ["healthcare", "backend", "industry", "api", "apis"],
   "experience-years": ["senior", "seniority", "years"],
   projects: ["built", "outside", "side", "portfolio"],
+  "pl-transfer": ["football", "soccer", "transfer", "valuation", "player", "sports", "regression"],
+  "dsa-agent": ["leetcode", "dsa", "striver", "automation", "agent", "dashboard"],
   cloud: ["database", "databases", "cloud"],
   education: ["graduation", "graduate", "university", "school", "college", "study", "degree", "gpa"],
   contact: ["reach", "mobile", "phone", "email", "call", "touch", "number"],
@@ -57,6 +59,8 @@ const SECTIONS: Record<string, Link> = {
   "experience-years": { label: "See the timeline", href: "#journey" },
   projects: { label: "See Work", href: "#work" },
   pipeline: { label: "See Work", href: "#work" },
+  "pl-transfer": { label: "See Work", href: "#work" },
+  "dsa-agent": { label: "See Work", href: "#work" },
   "doc-analyzer": { label: "See Work", href: "#work" },
   skills: { label: "See Skills", href: "#skills" },
   languages: { label: "See Skills", href: "#skills" },
@@ -216,8 +220,12 @@ const entries: Entry[] = [
       "Can I see some of Soham's work?",
     ],
     answer:
-      "The resume highlights two projects: an e-commerce data pipeline on Databricks handling 10M+ daily records, and an explainable RAG-based academic document analyzer built with Sentence-BERT and FAISS. Both are on GitHub.",
+      "Soham's main projects are a football player valuation model (XGBoost with SHAP explanations), an e-commerce data pipeline on Databricks handling 10M+ daily records, an explainable RAG-based academic document analyzer, and an automated DSA practice agent. All four are on GitHub.",
     links: [
+      {
+        label: "Player valuation",
+        href: "https://github.com/Soham286/pl-transfer-value",
+      },
       {
         label: "Data pipeline",
         href: "https://github.com/Soham286/ecommerce-medallion-pipeline",
@@ -226,9 +234,55 @@ const entries: Entry[] = [
         label: "Document analyzer",
         href: "https://github.com/Soham286/academic-document-analyzer",
       },
+      {
+        label: "DSA agent",
+        href: "https://github.com/Soham286/leetcode-daily-agent",
+      },
       githubLink,
     ],
-    related: ["pipeline", "doc-analyzer"],
+    related: ["pl-transfer", "pipeline", "doc-analyzer", "dsa-agent"],
+  },
+  {
+    id: "pl-transfer",
+    questions: [
+      "Tell me about the football player valuation project",
+      "What is PL Transfer Value?",
+      "What is Soham's best machine learning project?",
+      "Has Soham built a regression model with explainability?",
+      "Has Soham deployed an ML model in an app?",
+    ],
+    answer:
+      "PL Transfer Value estimates football players' market values. Soham trained a tuned XGBoost model on 64,622 player-season records using leakage-aware, time-based evaluation, reaching R² 0.80 and a €2.76M mean absolute error on a held-out 2025 season. A Streamlit app offers a catalog of 4,977 real players, custom-player valuations and SHAP explanations.",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/Soham286/pl-transfer-value",
+      },
+    ],
+    related: ["ml-experience", "projects", "dsa-agent"],
+  },
+  {
+    id: "dsa-agent",
+    questions: [
+      "Tell me about the LeetCode agent",
+      "What is the DSA Mastery Agent?",
+      "Has Soham built an automation or agent project?",
+      "Has Soham automated workflows on a schedule?",
+      "Does Soham practice coding interview problems?",
+    ],
+    answer:
+      "Soham's DSA Mastery Agent runs on GitHub Actions. It emails daily coding problems, detects accepted LeetCode submissions, tracks revision progress, sends warnings and weekly reports, and feeds a live Streamlit dashboard for topic performance and deadline pace.",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/Soham286/leetcode-daily-agent",
+      },
+      {
+        label: "Live dashboard",
+        href: "https://soham-dsa-mastery.streamlit.app/",
+      },
+    ],
+    related: ["projects", "pl-transfer"],
   },
   {
     id: "pipeline",
@@ -376,7 +430,7 @@ const entries: Entry[] = [
       "What is Soham like as a person?",
     ],
     answer:
-      "That's not something I have information on, since I only know what's on Soham's resume. Soham would be happy to hear from you directly.",
+      "That's not something I have information on, since I only know Soham's resume and projects. Soham would be happy to hear from you directly.",
     links: [emailLink],
     related: ["intro", "projects"],
   },
@@ -391,7 +445,7 @@ const entries: Entry[] = [
       "Am I talking to a bot or a human?",
     ],
     answer:
-      "I'm a small assistant on Soham's portfolio, not Soham. I don't generate text. A sentence-embedding model (all-MiniLM-L6-v2) runs in your browser, compares your question to questions I have answers for, and returns the closest match. All my answers were written from Soham's resume, and your questions are never sent to a server.",
+      "I'm a small assistant on Soham's portfolio, not Soham. I don't generate text. A sentence-embedding model (all-MiniLM-L6-v2) runs in your browser, compares your question to questions I have answers for, and returns the closest match. All my answers were written from Soham's resume and projects, and your questions are never sent to a server.",
     related: ["rag", "intro"],
   },
   {
@@ -420,7 +474,7 @@ export const fallback: Entry = {
   id: "fallback",
   questions: [],
   answer:
-    "I'm not sure about that, since I only answer from Soham's resume. One of the questions below may help, or you can ask Soham directly.",
+    "I'm not sure about that, since I only answer from Soham's resume and projects. One of the questions below may help, or you can ask Soham directly.",
   links: [emailLink],
   related: ["intro", "projects", "skills"],
 };
